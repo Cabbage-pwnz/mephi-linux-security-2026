@@ -1,0 +1,28 @@
+    1  sudo dnf install virtualbox-guest-additions
+    2  sudo groupadd students
+    3  sudo useradd -u 1234 -m -s /bin/bash user1
+    4  sudo usermod -aG students user1
+    5  sudo passwd user1
+    6  sudo change -M 90 user1
+    7  sudo chage -M 90 user1
+    8  id user1
+    9  sudo chage -1 user1
+   10  sudo chage -l user1
+   11  sudo cp /etc/passwd ~/passwd.out
+   12  sudo cp /etc/shadow ~/shadow.out
+   13  sudo cp /etc/group ~/group.out
+   14  sudo sed 's/:[^:]*:/:*:/2' /etc/shadow > ~/shadow_safe.out
+   15  mv ~/shadow_safe.out ~
+   16  sudo nano /etc/shadow
+   17  sudo find / -type f -perm -4000 -exec ls - ldb {} \; 2>/dev/null | tee ~/suid_files.out
+   18  ps -eo pid,ruid,euid,comm | awk '$2 != 0 && $3 == 0 ' | tee ~euid_root_processes.out
+   19  whoami
+   20  which clown
+   21  which date timedatectl
+   22  sudo visudo
+   23  which date timedatectl
+   24  sudi cisudo
+   25  sudo visudo
+   26  sudo chown admin:admin ~/sudoers.out
+   27  sudo chown admin:admin ~/shadow.out
+   28  history > ~/history.out
